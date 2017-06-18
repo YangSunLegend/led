@@ -1,0 +1,24 @@
+# 专用于编译.ko的Makefile
+# 需要找到当前运行内核对应的根Makefile
+# 如果.ko要在pc上运行，则需要找到redhat内核对应的根Makefile;
+# 如果.ko要在开发板上运行，则需要找到linux3.5内核对应的根Makefile
+# Author: syy
+# Date: 2017-06-10
+#KERNEL := /usr/src/kernels/`uname -r`/
+KERNEL := /var/nanyang/02kernel/kernel/linux-3.5/
+
+obj-m := led_test03.o
+myko := led_test03.ko
+mycfile := led01.c
+myelf := led01
+
+all:
+	make -C $(KERNEL) M=`pwd` modules
+	arm-linux-gcc -static -o $(myelf) $(mycfile)
+install:
+	adb remount
+	adb push $(myko) /system/lib/modules/
+	adb push $(myelf) /system/bin/
+clean:
+	make -C $(KERNEL) M=`pwd` clean
+

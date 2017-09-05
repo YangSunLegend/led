@@ -95,5 +95,5 @@ static void __exit my_exit(void)
 }
 module_init(my_init);
 module_exit(my_exit);
-MODULE_AUTHOR("ZHT");
+MODULE_AUTHOR("SYY");
 MODULE_LICENSE("GPL");

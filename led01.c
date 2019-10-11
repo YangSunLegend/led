@@ -4,7 +4,7 @@
  * $>led01 /dev/myled alloff
  * $>led01 /dev/myled on <0~3>
  * $>led01 /dev/myled off <0~3>
- * Author: syy
+ * Author: syy 0126
  * Date: 2017-06-03
  ************************/
 #include <stdio.h>
